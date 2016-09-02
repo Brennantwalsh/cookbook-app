@@ -1,0 +1,10 @@
+<h1>Cookbook App</h1>
+
+<% @recipes.each do |recipe| %>
+  <h2><%= recipe.title %></h2>
+  <h2>By: <%= recipe.chef %></h2>
+  <h3>Time: <%= recipe.prep_time %> minute(s)</h3>
+  <h2>Ingredients: <%= recipe.ingredients %></h2>
+  <h2>Directions: <%= recipe.directions %></h2>
+  <br>
+<% end %>
