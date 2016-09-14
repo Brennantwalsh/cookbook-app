@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+  belongs_to :user
   def ingredients_list
     ingredients.split(' ')
   end
@@ -18,5 +19,9 @@ class Recipe < ApplicationRecord
     message += "#{hours} #{'hour'.pluralize(hours)}" if hours > 0
     message += " and " if hours > 0 && minutes > 0
     message += " #{minutes} #{'minute'.pluralize(minutes)}" if minutes
+  end
+
+  def chef
+    user.name
   end
 end
