@@ -5,6 +5,6 @@
   <h2>Directions: <%= @recipe.directions %></h2>
 
 
-  <%= link_to 'Edit', "/recipes#{@recipe.id}/edit" %>
+  <%= link_to 'Edit', "/recipes/#{@recipe.id}/edit" %>
   <br>
   <%= link_to 'Delete', "/recipes/#{@recipe.id}", method: :delete %>
