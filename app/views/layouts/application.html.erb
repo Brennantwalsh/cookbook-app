@@ -21,6 +21,10 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Chop Chop Stir</a>
+
+        <% if  current_user %>
+          <a class="navbar-brand">Welcome <%= current_user.name.titleize %></a>
+        <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,9 +46,12 @@
               <li><a href="/recipes?sort=chef">chef</a></li>
               <li><a href="/recipes?sort=ingredients">ingredients</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="/signup">Sign Up</a></li>
-              <li><a href="/login">Log In</a></li>
-              <li><%= link_to 'Log Out', '/logout', method: :delete %></li>
+              <% if current_user  %>
+                <li><%= link_to 'Log Out', '/logout', method: :delete %></li>
+              <% else %>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+              <% end %>
             </ul>
           </li>
         </ul>

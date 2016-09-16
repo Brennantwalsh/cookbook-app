@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  
   def index
     @recipes = Recipe.all 
     sort_attribute = params[:sort]
@@ -13,7 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(title: params[:title], 
-                            chef: params[:chef], 
+                            user_id: current_user.id, 
                             prep_time: params[:prep_time],
                             ingredients: params[:ingredients],
                             directions: params[:directions])
@@ -33,7 +35,6 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(title: params[:title],
-                   chef: params[:chef],
                    prep_time: params[:prep_time],
                    ingredients: params[:ingredients],
                    directions: params[:directions])
